@@ -3,6 +3,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+> **Important** If pulling from the inital commit, either install the package @reactvision/react-viro, or remove its dependencies in android side. I have commit it in IOS podile but forgot to remove changes. This library was causing the issue in 0.77.1 RN Version so I removed it initially but setup was there. 
 
 ## Step 1: Start Metro
 
