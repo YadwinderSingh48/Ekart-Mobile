@@ -50,9 +50,9 @@ react {
     //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
     // hermesFlags = ["-O", "-output-source-map"]
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Specify font files
-]
+// project.ext.vectoricons = [
+//     iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf', 'IonIcons.ttf', 'MaterialCommunityIcons.ttf' ] // Specify font files
+// ]
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
@@ -117,15 +117,15 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
-    implementation project(':gvr_common')
-    implementation project(':arcore_client')
-    implementation project(path: ':react_viro')
-    implementation project(path: ':viro_renderer')
-    implementation 'androidx.media3:media3-exoplayer:1.1.1'
-    implementation 'androidx.media3:media3-exoplayer-dash:1.1.1'
-    implementation 'androidx.media3:media3-exoplayer-hls:1.1.1'
-    implementation 'androidx.media3:media3-exoplayer-smoothstreaming:1.1.1'
-    implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'
+    // implementation project(':gvr_common')
+    // implementation project(':arcore_client')
+    // implementation project(path: ':react_viro')
+    // implementation project(path: ':viro_renderer')
+    // implementation 'androidx.media3:media3-exoplayer:1.1.1'
+    // implementation 'androidx.media3:media3-exoplayer-dash:1.1.1'
+    // implementation 'androidx.media3:media3-exoplayer-hls:1.1.1'
+    // implementation 'androidx.media3:media3-exoplayer-smoothstreaming:1.1.1'
+    // implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

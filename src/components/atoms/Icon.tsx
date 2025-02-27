@@ -15,8 +15,8 @@ const Icon:FC<IconProps> = ({color,size,name,iconFamily}) => {
     return(
         <>
             {iconFamily === 'Ionicons' && <Ionicons name={name} size={size} color={color} />}
-            {iconFamily === 'MaterialCommunityIcons' && <Ionicons name={name} size={size} color={color} />}
-            {iconFamily === 'MaterialIcons' && <Ionicons name={name} size={size} color={color} />}
+            {iconFamily === 'MaterialCommunityIcons' && <MaterialCommunityIcons name={name} size={size} color={color} />}
+            {iconFamily === 'MaterialIcons' && <MaterialIcons name={name} size={size} color={color} />}
         </>
     )
 }
