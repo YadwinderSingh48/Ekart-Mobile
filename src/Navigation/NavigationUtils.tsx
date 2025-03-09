@@ -29,7 +29,7 @@ export async function resetAndNavigate(routeName:string, params?: object) {
         }));
     }
 }
-export async function goBack(routeName:string) {
+export async function goBack() {
     navigationRef?.isReady();
     if(navigationRef.isReady()) {
         navigationRef.dispatch(CommonActions.goBack());

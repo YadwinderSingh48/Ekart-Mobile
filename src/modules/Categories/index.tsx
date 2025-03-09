@@ -5,45 +5,59 @@ import { useAppDispatch, useAppSelector } from '@store/reduxHook';
 import { getCategories } from './api/actions';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '@utils/Constants';
+import { navigate } from '../../Navigation/NavigationUtils';
 
 const Categories = () => {
 
   const dispatch = useAppDispatch();
-  const {data,loading,error} = useAppSelector(state => state.categories);
+  const { data, loading, error } = useAppSelector(state => state.categories);
 
   useEffect(() => {
-        dispatch(getCategories());
-        console.log(data);
-        console.error(error)
-  },[]);
+    dispatch(getCategories());
+  }, []);
 
   return (
     <View style={styles.container}>
-        <View style={styles.headerContainer} >
-          <SafeAreaView />
-          <Text style={styles.title} >
-            Categories
-          </Text>
-          <Text style={styles.subtitle} >
-            Explore our wide range of Categories
-          </Text>
+      <View style={styles.headerContainer} >
+        <SafeAreaView />
+        <Text style={styles.title} >
+          Categories
+        </Text>
+        <Text style={styles.subtitle} >
+          Explore our wide range of Categories
+        </Text>
+      </View>
 
-            {
-              loading ? 
-              <ActivityIndicator size={'small'} color={'black'} /> : 
-              <FlatList
+      {
+          loading ?
+            <ActivityIndicator size={'small'} color={'black'} /> :
+            <FlatList
               data={data}
               numColumns={2}
               keyExtractor={(item) => item?._id?.toString()}
-              renderItem={({item}) => (
-                    <TouchableOpacity style={styles.itemContainer} >
-                        <Image source={{uri: item?.image_uri}} style={styles.image} />
-                        <Text style={styles.name} >{item?.name}</Text>
-                    </TouchableOpacity>
-              ) } 
-              />
-            }
-        </View>
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={()=> navigate("Products", {
+                  id: item?._id,
+                  name: item?.name
+                })} style={styles.itemContainer} >
+                  <Image source={{ uri: item?.image_uri }} style={styles.image} />
+                  <Text style={styles.name} >{item?.name}</Text>
+                </TouchableOpacity>
+              )}
+              ListFooterComponent={
+                <>
+                {
+                  error &&
+                  <Text style={styles.subtitle} >There was an error</Text>
+                }
+                </>
+              }
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.contentContainer}
+            />
+        }
+
+
     </View>
   )
 }
@@ -54,12 +68,16 @@ export default Categories
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E7F9Ec'
+    backgroundColor: '#E7F9EC'
+  },
+  contentContainer: {
+    padding: 10,
+
   },
   headerContainer: {
     padding: 20,
     backgroundColor: '#fff',
-    alignItems:'center',
+    alignItems: 'center',
     marginBottom: 10,
     borderWidth: 1,
     borderBottomColor: '#ddd'

@@ -7,10 +7,12 @@ import Categories from '@modules/Categories';
 import Account from '@modules/Account';
 import Cart from '@modules/Cart';
 import { AccountIcon, CartIcon, CategoriesIcon, HomeIcon } from './TabIcons';
+import { useAppSelector } from '@store/reduxHook';
+import { selectTotalItemsInCart } from '@modules/Cart/api/slice';
 
 const Tab = createBottomTabNavigator();
 const MainNavigator:FC = () => {
-    const count = 5;
+    const count = useAppSelector(selectTotalItemsInCart) ;
   return (
         <Tab.Navigator
             screenOptions={{
